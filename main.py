@@ -18,6 +18,16 @@ bot = Bot(token=API_TOKEN)
 
 dp = Dispatcher()
 
+#Клавиатура старт
+start_keyboard = ReplyKeyboardMarkup(
+    keyboard = [[KeyboardButton(text="Создать обявление")]],
+    resize_keyboard=True
+)
+ 
+ #Обработка команды start
+@dp.message(Command(commands=["start"]))
+async def command_start(message: types.Message):
+    await message.answer("Введите текст для публикаций!")
 #обработчик перепостинга
 @dp.message(F.text)  
 async def commands(message: Message):
